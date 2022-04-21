@@ -6,7 +6,7 @@ let song_artist = document.querySelector('.song-artist');
 
 let playpause_btn = document.querySelector('.playpause-song');
 let next_btn = document.querySelector('.next-song');
-let prev_btn = document.querySelector('.prev-song');
+let prev_btn = document.querySelector('.previous-song');
 
 let seek_slider = document.querySelector('.seek_slider');
 let volume_slider = document.querySelector('.volume_slider');
@@ -143,7 +143,7 @@ function nextSong(){
     loadSong(song_index);
     playSong();
 }
-function prevSong(){
+function previousSong(){
     if(song_index > 0){
         song_index -= 1;
     }else{
