@@ -22,8 +22,8 @@ body{
     flex-direction: column;
     justify-content: center;
 }
-/* track art formatting*/
-.track-art{
+/* song pic formatting*/
+.song-art{
     margin: 25px;
     height: 220px;
     width: 220px;
@@ -42,10 +42,10 @@ body{
 /* .now-playing{
     font-size: 1rem;
 } */
-.track-name{
+.song-name{
     font-size: 2.0rem;
 }
-.track-artist{
+.song-artist{
     margin-top: 5px;
     font-size: 1.5rem;
 }
@@ -61,18 +61,18 @@ body{
 }
 /* .repeat-track,
 .random-track, */
-.playpause-track,
-.prev-track,
-.next-track{
+.playpause-song,
+.prev-song,
+.next-song{
     padding: 28px;
     opacity: 0.8;
     transition: opacity .2s;
 }
 /*.repeat-track:hover,
 .random-track:hover, */
-.playpause-track:hover,
-.prev-track:hover,
-.next-track:hover{
+.playpause-song:hover,
+.prev-song:hover,
+.next-song:hover{
     opacity: 1.0;
 }
 .slider_container{

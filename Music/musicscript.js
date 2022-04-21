@@ -1,22 +1,25 @@
-/* Music Box Buttons*/
-/* let now_playing = document.querySelector('.now-playing'); */
-let track_art = document.querySelector('.track-art');
-let track_name = document.querySelector('.track-name');
-let track_artist = document.querySelector('.track-artist');
 
-let playpause_btn = document.querySelector('.playpause-track');
-let next_btn = document.querySelector('.next-track');
-let prev_btn = document.querySelector('.prev-track');
+
+
+/* Music Box Buttons*/
+
+let song_art = document.querySelector('.song-art');
+let song_name = document.querySelector('.song-name');
+let song_artist = document.querySelector('.song-artist');
+
+let playpause_btn = document.querySelector('.playpause-song');
+let next_btn = document.querySelector('.next-song');
+let prev_btn = document.querySelector('.prev-song');
 
 let seek_slider = document.querySelector('.seek_slider');
 let volume_slider = document.querySelector('.volume_slider');
 let curr_time = document.querySelector('.current-time');
 let total_duration = document.querySelector('.total-duration');
-let wave = document.getElementById('wave');
+let visualizer = document.getElementById('visualizer');
 let randomIcon = document.querySelector('.fa-random');
-let curr_track = document.createElement('audio');
+let curr_song = document.createElement('audio');
 /*Track Player Music Seq*/
-let track_index = 0;
+let song_index = 0;
 let isPlaying = false;
 let isRandom = false; 
 let updateTimer;
@@ -24,28 +27,28 @@ let updateTimer;
 
 /* Music Queue - 4 songs */
 const music_list = [
-    /*Song 1*/
+     /*Song 1-Music of The Month*/
     {
         img : 'image.jpg',
         name : 'Music of the Month',
         artist : 'Rick & Mario',
         music : 'music.mp3'
     },
-     /*Song 2*/
+      /*Song 2-Until I Found You*/
     {
         img : 'image_1.jpg',
         name : 'Until I Found You',
         artist : 'Stephen Sanchez',
         music : 'music_1.mp3'
     },
-     /*Song 3*/
+     /*Song 3-Out Of My League*/
     {
         img : 'image_2.jpg',
         name : 'Out Of My League',
         artist : 'Fitz And The Tantrums',
         music : 'music_2.mp3'
     },
-     /*Song 4*/
+     /*Song 4-We Didn't Start The Fire*/
     {
         img : 'image_3.jpg',
         name : 'We Didnt  Start The Fire',
@@ -54,23 +57,23 @@ const music_list = [
     }
 ];
 
-loadTrack(track_index);
+loadSong(song_index);
 
-function loadTrack(track_index){
+function loadSong(song_index){
     clearInterval(updateTimer);
     reset();
 
-    curr_track.src = music_list[track_index].music;
-    curr_track.load();
+    curr_song.src = music_list[song_index].music;
+    curr_song.load();
 
-    track_art.style.backgroundImage = "url(" + music_list[track_index].img + ")";
-    track_name.textContent = music_list[track_index].name;
-    track_artist.textContent = music_list[track_index].artist;
-    /* now_playing.textContent = "Playing music " + (track_index + 1) + " of " + music_list.length; */
+   song_art.style.backgroundImage = "url(" + music_list[song_index].img + ")";
+    song_name.textContent = music_list[song_index].name;
+    song_artist.textContent = music_list[song_index].artist;
+    /* now_playing.textContent = "Playing music " + (song_index + 1) + " of " + music_list.length; */
 
     updateTimer = setInterval(setUpdate, 1000);
 
-    curr_track.addEventListener('ended', nextTrack);
+    curr_song.addEventListener('ended', nextSong);
     random_bg_color();
 }
 /* Random Background Colour Generator*/
@@ -98,7 +101,7 @@ function reset(){
     total_duration.textContent = "00:00";
     seek_slider.value = 0;
 }
-function randomTrack(){
+function randomSong(){
     isRandom ? pauseRandom() : playRandom();
 }
 function playRandom(){
@@ -109,66 +112,66 @@ function pauseRandom(){
     isRandom = false;
     randomIcon.classList.remove('randomActive');
 }
-function repeatTrack(){
-    let current_index = track_index;
-    loadTrack(current_index);
-    playTrack();
+function repeatSong(){
+    let current_index = song_index;
+    loadSong(current_index);
+    playSong();
 }
-function playpauseTrack(){
-    isPlaying ? pauseTrack() : playTrack();
+function playpauseSong(){
+    isPlaying ? pauseSong() : playSong();
 }
-function playTrack(){
-    curr_track.play();
+function playSong(){
+    curr_song.play();
     isPlaying = true;
-    track_art.classList.add('rotate');
-    wave.classList.add('loader');
+    song_art.classList.add('rotate');
+    visualizer.classList.add('loader');
     playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
 }
-function pauseTrack(){
-    curr_track.pause();
+function pauseSong(){
+    curr_song.pause();
     isPlaying = false;
-    track_art.classList.remove('rotate');
-    wave.classList.remove('loader');
+    song_art.classList.remove('rotate');
+    visualizer.classList.remove('loader');
     playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
 }
-function nextTrack(){
-    if(track_index < music_list.length - 1 && isRandom === false){
-        track_index += 1;
-    }else if(track_index < music_list.length - 1 && isRandom === true){
+function nextSong(){
+    if(song_index < music_list.length - 1 && isRandom === false){
+        song_index += 1;
+    }else if(song_index < music_list.length - 1 && isRandom === true){
         let random_index = Number.parseInt(Math.random() * music_list.length);
-        track_index = random_index;
+        song_index = random_index;
     }else{
-        track_index = 0;
+        song_index = 0;
     }
-    loadTrack(track_index);
-    playTrack();
+    loadSong(song_index);
+    playSong();
 }
-function prevTrack(){
-    if(track_index > 0){
-        track_index -= 1;
+function prevSong(){
+    if(song_index > 0){
+        song_index -= 1;
     }else{
-        track_index = music_list.length -1;
+        song_index = music_list.length -1;
     }
-    loadTrack(track_index);
-    playTrack();
+    loadSong(song_index);
+    playSong();
 }
 function seekTo(){
-    let seekto = curr_track.duration * (seek_slider.value / 100);
-    curr_track.currentTime = seekto;
+    let seekto = curr_song.duration * (seek_slider.value / 100);
+    curr_song.currentTime = seekto;
 }
 function setVolume(){
-    curr_track.volume = volume_slider.value / 100;
+    curr_song.volume = volume_slider.value / 100;
 }
 function setUpdate(){
     let seekPosition = 0;
-    if(!isNaN(curr_track.duration)){
-        seekPosition = curr_track.currentTime * (100 / curr_track.duration);
+    if(!isNaN(curr_song.duration)){
+        seekPosition = curr_song.currentTime * (100 / curr_song.duration);
         seek_slider.value = seekPosition;
 
-        let currentMinutes = Math.floor(curr_track.currentTime / 60);
-        let currentSeconds = Math.floor(curr_track.currentTime - currentMinutes * 60);
-        let durationMinutes = Math.floor(curr_track.duration / 60);
-        let durationSeconds = Math.floor(curr_track.duration - durationMinutes * 60);
+        let currentMinutes = Math.floor(curr_song.currentTime / 60);
+        let currentSeconds = Math.floor(curr_song.currentTime - currentMinutes * 60);
+        let durationMinutes = Math.floor(curr_song.duration / 60);
+        let durationSeconds = Math.floor(curr_song.duration - durationMinutes * 60);
 
         if(currentSeconds < 10) {currentSeconds = "0" + currentSeconds; }
         if(durationSeconds < 10) { durationSeconds = "0" + durationSeconds; }
