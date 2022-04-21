@@ -1,7 +1,4 @@
-
-
-
-/* Music Box Buttons*/
+/* Music Box Variable Naming*/
 
 let song_art = document.querySelector('.song-art');
 let song_name = document.querySelector('.song-name');
@@ -26,7 +23,7 @@ let updateTimer;
 
 
 /* Music Queue - 4 songs */
-const music_list = [
+const song_queue = [
      /*Song 1-Music of The Month*/
     {
         img : 'image.jpg',
@@ -63,13 +60,13 @@ function loadSong(song_index){
     clearInterval(updateTimer);
     reset();
 
-    curr_song.src = music_list[song_index].music;
+    curr_song.src = song_queue[song_index].music;
     curr_song.load();
 
-   song_art.style.backgroundImage = "url(" + music_list[song_index].img + ")";
-    song_name.textContent = music_list[song_index].name;
-    song_artist.textContent = music_list[song_index].artist;
-    /* now_playing.textContent = "Playing music " + (song_index + 1) + " of " + music_list.length; */
+   song_art.style.backgroundImage = "url(" +song_queue[song_index].img + ")";
+    song_name.textContent = song_queue[song_index].name;
+    song_artist.textContent = song_queue[song_index].artist;
+    /* now_playing.textContent = "Playing music " + (song_index + 1) + " of " + song_queue.length; */
 
     updateTimer = setInterval(setUpdate, 1000);
 
@@ -135,10 +132,10 @@ function pauseSong(){
     playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
 }
 function nextSong(){
-    if(song_index < music_list.length - 1 && isRandom === false){
+    if(song_index < song_queue.length - 1 && isRandom === false){
         song_index += 1;
-    }else if(song_index < music_list.length - 1 && isRandom === true){
-        let random_index = Number.parseInt(Math.random() * music_list.length);
+    }else if(song_index < song_queue.length - 1 && isRandom === true){
+        let random_index = Number.parseInt(Math.random() *song_queue.length);
         song_index = random_index;
     }else{
         song_index = 0;
@@ -150,7 +147,7 @@ function prevSong(){
     if(song_index > 0){
         song_index -= 1;
     }else{
-        song_index = music_list.length -1;
+        song_index = song_queue.length -1;
     }
     loadSong(song_index);
     playSong();
