@@ -13,7 +13,6 @@ This is my first official Web-Development project for a contest. I have created 
   - Open The Website (link attached in description) 
   - Scroll Through the feed
   - Click On the Project Headings to get redirected to the project page (Hyperlink)
-  - A folder containing a demo video of your project. (yet to be done)
 
 ## Project 1
 - Simply click on Start Button
@@ -28,3 +27,4 @@ This is my first official Web-Development project for a contest. I have created 
 - Use media slider to skip to whatever part you wish to listen to
 - use volume slider to change the volume 
 
+--> Check Out The Video Demonstrations for Better Understanding of how the website works :)
