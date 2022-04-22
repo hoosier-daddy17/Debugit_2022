@@ -2,7 +2,7 @@
 
 
 ## Introduction
-This is my first official Web-Development project for a contest. I have created a simple personal blogging website using HTML and CSS. The website contains a general description about me and includes some of my sub-projects that I tried to design during Debugit Cops Week. The sub-projects have been made using HTML, CSS and JS.
+This is my first official Web-Development project for a contest. I have created a simple personal blogging website- The Blissful Blogger using HTML and CSS. The website contains a general description about me and includes some of my sub-projects that I tried to design during Debugit Cops Week. The sub-projects have been made using HTML, CSS and JS.
 
 ## Front-End Tech Stack Used-
 <li>HTML</li>
@@ -10,7 +10,7 @@ This is my first official Web-Development project for a contest. I have created 
 <li>JavaScript</li>
 
 ## How To Use
-  - Open The Website (link attached in description) 
+  - Open The Website 
   - Scroll Through the feed
   - Click On the Project Headings to get redirected to the project page (Hyperlink)
 
